@@ -1,5 +1,5 @@
 <?php
-    include_once '../database/db_credentials.php';
+    include_once '../config/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center my-5">Blog website</h1>
+        <h1 class="text-center my-5"><?php echo $website_title; ?></h1>
         <hr />
         <h2 class="text-center my-2">Posts</h2>
         <table class="table table-striped">
