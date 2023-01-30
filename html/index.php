@@ -15,6 +15,7 @@
     <div class="container">
         <h1 class="text-center my-5"><?php echo $website_title; ?></h1>
         <hr />
+        test change
         <div class="col-8">
             <form method="post" action="add_post.php">
                 <div class="form-group">
