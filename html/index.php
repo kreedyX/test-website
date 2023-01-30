@@ -9,11 +9,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Blog</title>
+    <title><?php echo $website_title; ?></title>
 </head>
 <body>
     <div class="container">
         <h1 class="text-center my-5"><?php echo $website_title; ?></h1>
+        <hr />
+        <div class="col-8">
+            <form method="post" action="add_post.php">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" name="title">
+                </div>
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" class="form-control" id="author" name="author">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
         <hr />
         <h2 class="text-center my-2">Posts</h2>
         <table class="table table-striped">
@@ -33,7 +51,7 @@
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    $stmt = "SELECT * FROM posts";
+    $stmt = "SELECT * FROM posts ORDER BY id DESC";
     $result = mysqli_query($conn, $stmt);
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>
